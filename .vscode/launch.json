@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Start",
+      "program": "${workspaceFolder}/bin/server",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "pwa-node",
+      "envFile": "${workspaceFolder}/config/.env"
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Docker: Attach to Node",
+      "port": 9229,
+      "address": "localhost",
+      "localRoot": "${workspaceFolder}/dist",
+      "remoteRoot": "/app/dist",
+      "protocol": "inspector",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "skipFiles": ["<node_internals>/**/*.js"],
+      "smartStep": true,
+      "restart": true,
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "/app/**/*": "${workspaceRoot}/**/*"
+      }
+    }
+  ]
+}
